@@ -1,0 +1,25 @@
+{
+  "name": "ranked-vote",
+  "version": "0.0.1",
+  "description": "A ranked voting system with github credentials.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpaceKrakens/Ranked-Vote.git"
+  },
+  "keywords": [
+    "GitHub",
+    "Voting",
+    "Vote",
+    "SpaceKrakens"
+  ],
+  "author": "SpaceKrakens",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SpaceKrakens/Ranked-Vote/issues"
+  },
+  "homepage": "https://github.com/SpaceKrakens/Ranked-Vote#readme"
+}
