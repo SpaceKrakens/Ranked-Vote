@@ -1,24 +1,15 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
-
-		<title>Ranked Voting</title>
-	</head>
-	<body>
-		<% if (!user) { %>
-			<p>
-			<a href="/">Home</a> |
-			<a href="/login">Log In</a>
-			</p>
-		<% } else { %>
-			<p>
-			<a href="/">Home</a> |
-			<a href="/account">Account</a> |
-			<a href="/logout">Log Out</a>
-			</p>
-		<% } %>
-		<%- body %>
-	</body>
+    <head>
+        <% include partials/head.ejs %>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse avbar-default">
+            <% include partials/header.ejs %>
+        </nav>
+        <div class="container">
+            <%- body %>
+        </div>
+        <% include partials/footer.ejs %>
+    </body>
 </html>

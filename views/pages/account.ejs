@@ -1,0 +1,8 @@
+<ul class="list-group">
+    <li class="list-group-item">ID: <%= user.id %></li>
+    <li class="list-group-item">Username: <%= user.username %></li>
+    <li class="list-group-item">Name: <%= user.displayName %></li>
+    <% if(user.emails) { %>
+    <li class="list-group-item">Email: <%= user.emails[0].value %></li>
+    <% } %>
+</ul>
