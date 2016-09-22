@@ -7,6 +7,7 @@ var methodOverride = require('method-override');
 var GitHubStrategy = require('passport-github2').Strategy;
 var partials = require('express-partials');
 
+var lastPage;
 
 var GITHUB_CLIENT_ID = process.env['GITHUB_CLIENT_ID'];
 var GITHUB_CLIENT_SECRET = process.env['GITHUB_CLIENT_SECRET'];
@@ -82,6 +83,10 @@ app.get('/login', function(req, res){
   res.render('login', { user: req.user });
 });
 
+app.get('/vote', ensureAuthenticated, function(req, res){
+  res.render('vote', {user: req.user });
+});
+
 // GET /auth/github
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  The first step in GitHub authentication will involve redirecting
@@ -102,7 +107,7 @@ app.get('/auth/github',
 app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/login' }),
   function(req, res) {
-    res.redirect('/');
+    res.redirect(lastPage);
   });
 
 app.get('/logout', function(req, res){
@@ -120,5 +125,7 @@ app.listen(3000);
 //   login page.
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
+  // Set to the page that called ensureAuthenticated
+  lastPage = '/vote';
+  res.redirect('/login');
 }
