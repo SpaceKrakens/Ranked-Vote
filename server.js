@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var GitHubStrategy = require('passport-github2').Strategy;
 var partials = require('express-partials');
+var helmet = require('helmet');
 
 var lastPage;
 
@@ -53,6 +54,7 @@ passport.use(new GitHubStrategy({
 
 
 var app = express();
+app.use(helmet());
 
 // configure Express
 app.set('views', __dirname + '/views');
