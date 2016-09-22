@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<% include ../partials/head %>
-	</head>
-	<body>
-		<% if (!user) { %>
-			<p>
-			<a href="/">Home</a> |
-			<a href="/login">Log In</a>
-			</p>
-		<% } else { %>
-			<p>
-			<a href="/">Home</a> |
-			<a href="/account">Account</a> |
-			<a href="/logout">Log Out</a>
-			</p>
-		<% } %>
-		<%- body %>
-	</body>
+    <head>
+        <% include ../partials/head %>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse avbar-default">
+            <% include ../partials/header %>
+        </nav>
+        <div class="container">
+            <%- body %>
+        </div>
+        <% include ../partials/footer %>
+    </body>
 </html>

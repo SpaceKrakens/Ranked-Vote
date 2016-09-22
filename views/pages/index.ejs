@@ -1,6 +1,7 @@
-
-<% if (!user) { %>
-	<h2>Welcome! Please log in.</h2>
-<% } else { %>
-	<h2>Hello, <%= user.displayName %>.</h2>
-<% } %>
+<div class="jumbotron">
+    <% if (!user) { %>
+    <h1>Welcome! Please log in.</h1>
+    <% } else { %>
+    <h1>Hello, <%= user.displayName %>.</h1>
+    <% } %>
+</div>
