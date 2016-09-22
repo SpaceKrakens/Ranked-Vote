@@ -83,7 +83,7 @@ app.get('/login', function(req, res){
   res.render('login', { user: req.user });
 });
 
-app.get('/vote', ensureAuthenticated, function(req, res){
+app.get('/vote', function(req, res){
   res.render('vote', {user: req.user });
 });
 
@@ -126,6 +126,7 @@ app.listen(3000);
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   // Set to the page that called ensureAuthenticated
+  // Will change to session spesific later!
   lastPage = '/vote';
   res.redirect('/login');
 }
