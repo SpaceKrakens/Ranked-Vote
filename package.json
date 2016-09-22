@@ -21,5 +21,17 @@
   "bugs": {
     "url": "https://github.com/SpaceKrakens/Ranked-Vote/issues"
   },
-  "homepage": "https://github.com/SpaceKrakens/Ranked-Vote#readme"
+  "homepage": "https://github.com/SpaceKrakens/Ranked-Vote#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "express-partials": "^0.3.0",
+    "express-session": "^1.14.1",
+    "method-override": "^2.3.6",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-github2": "^0.1.10",
+    "router": "^1.1.4"
+  }
 }
