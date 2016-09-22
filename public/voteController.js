@@ -1,8 +1,3 @@
-// Using the core $.ajax() method
-var postList = function () {
-
-};
-
 // sets lists as sortable and disableSelection
 $("#sortable1, #sortable2").sortable({
     connectWith: ".connectedSortable"
@@ -12,7 +7,7 @@ $("#submitButton").click(function () {
     $.post({
             url: "vote/submit",
             data: $("#sortable2").sortable("serialize", {key: "sort"}),
-            dataType: "json",
+            dataType: "json"
         })
         .done(function (json) {
             $("<h1>").text(json.title).appendTo("body");
@@ -24,7 +19,7 @@ $("#submitButton").click(function () {
             console.log("Status: " + status);
             console.dir(xhr);
         })
-        .always(function (xhr, status) {
+        .always(function () {
             alert("The request is complete!");
         });
 });
