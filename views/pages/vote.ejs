@@ -1,13 +1,25 @@
-<ul id="sortable1" class="connectedSortable list-group">
-    <% for(var i = 1; i < 6; i++){ %>
-    <li class="ui-state-default list-group-item">
-        <span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> Item <%= i %>
-    </li>
-    <% } %>
-</ul>
 
-<ul id="sortable2" class="connectedSortable"></ul>
-
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <ul id="sortable1" class="connectedSortable list-group">
+        <% for(var i = 1; i < 6; i++){ %>
+        <li class="ui-state-default list-group-item">
+          <span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> Item <%= i %>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+    <div class="col-xs-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">Place your vote here</div>
+          <ul id="sortable2" class="connectedSortable list-group">                  
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <input type="button" id="submitButton" value="Submit" class="btn btn-default"/>
 
 <script src="voteController.js"></script>
