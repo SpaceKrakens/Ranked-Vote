@@ -1,7 +1,23 @@
-// sets lists as sortable and disableSelection
-$("#sortable1, #sortable2").sortable({
-    connectWith: ".connectedSortable"
-}).disableSelection();
+// sets lists as sortable
+// sets basic accordion functionality.
+$("#sortable1, #sortable2")
+  .sortable({
+    placeholder: "ui-state-highlight",
+    handle: "li",
+    connectWith: ".connectedSortable",
+}).accordion({
+    header: "> div > li",
+    active: false,
+    collapsible: true
+})
+
+// Not working yet - want to make a spesific button on the sortable to make it easier to collapse and expand without 
+// dragging accedentaly.
+$( "collapsible" ).on( "click", function() {
+    var icon = $( this );
+    icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
+    icon.closest( ".connectedSortable" ).toggle();
+});
 
 $("#submitButton").click(function () {
     $.post({
