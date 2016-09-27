@@ -28,13 +28,14 @@
     "express": "^4.14.0",
     "express-partials": "^0.3.0",
     "express-session": "^1.14.1",
+    "helmet": "^2.2.0",
+    "jquery": "^3.1.0",
+    "jquery-ui": "^1.12.1",
     "method-override": "^2.3.6",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-github2": "^0.1.10",
     "router": "^1.1.4",
-    "jquery": "^3.1.0",
-    "jquery-ui": "^1.12.1",
-    "helmet": "^2.2.0"
+    "sqlite3": "^3.1.4"
   }
 }

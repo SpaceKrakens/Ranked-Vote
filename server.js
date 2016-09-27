@@ -7,12 +7,12 @@ var methodOverride = require('method-override');
 var GitHubStrategy = require('passport-github2').Strategy;
 var partials = require('express-partials');
 var helmet = require('helmet');
-
-var lastPage;
+var sqlite3 = require('sqlite3');
 
 var GITHUB_CLIENT_ID = process.env['GITHUB_CLIENT_ID'];
 var GITHUB_CLIENT_SECRET = process.env['GITHUB_CLIENT_SECRET'];
 
+var db = new sqlite3.Database(":memory:");
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -132,8 +132,6 @@ function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    // Set to the page that called ensureAuthenticated
-    // Will change to session spesific later!
-    lastPage = '/vote';
+    // have a way to return to the last page the user was on when not authenticated after login is done
     res.redirect('/login');
 }
