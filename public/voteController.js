@@ -5,11 +5,7 @@ $("#sortable1, #sortable2")
     placeholder: "ui-state-highlight",
     handle: "li",
     connectWith: ".connectedSortable",
-}).accordion({
-    header: "> div > li",
-    active: false,
-    collapsible: true
-})
+});
 
 // Not working yet - want to make a spesific button on the sortable to make it easier to collapse and expand without 
 // dragging accedentaly.
