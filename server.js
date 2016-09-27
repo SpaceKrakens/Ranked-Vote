@@ -7,7 +7,7 @@ var methodOverride = require('method-override');
 var GitHubStrategy = require('passport-github2').Strategy;
 var partials = require('express-partials');
 var helmet = require('helmet');
-var sqlite3 = require('sqlite3');
+var sqlite3 = require('sqlite3').verbose();
 
 var GITHUB_CLIENT_ID = process.env['GITHUB_CLIENT_ID'];
 var GITHUB_CLIENT_SECRET = process.env['GITHUB_CLIENT_SECRET'];
