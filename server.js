@@ -1,5 +1,4 @@
 var express = require('express');
-var passport = require('passport');
 var util = require('util');
 var session = require('express-session');
 var bodyParser = require('body-parser');
@@ -7,15 +6,14 @@ var methodOverride = require('method-override');
 
 var partials = require('express-partials');
 var helmet = require('helmet');
-var routes = require('./routes/index');
+var routes = require('./routes');
 var passSession = require('./session');
-var sqllite3 = require('sqlite3');
 
 var models = require('./models');
 
 var app = express();
 app.use(helmet());
-
+models.sequelize.sync();
 // configure Express
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -32,7 +30,10 @@ app.use(session({secret: 'keyboard cat', resave: false, saveUninitialized: false
 app.use(passSession.initialize());
 app.use(passSession.session());
 
-app.use(routes)
+app.use('/', require('./routes/index'));
+app.use('/user', require('./routes/users'));
+app.use('/poll', require('./routes/polls'));
+app.use('/auth', require('./routes/auth'));
 
 
 
