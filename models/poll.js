@@ -3,11 +3,15 @@ module.exports = function (sequelize, DataTypes) {
     var Poll = sequelize.define('Poll', {
         name: DataTypes.STRING,
         description: DataTypes.TEXT,
-        type: DataTypes.INTEGER
+        type: DataTypes.ENUM('ranked', 'pick-one', 'pick-many'),
+        access: DataTypes.ENUM('all', 'password', 'contributor', 'maintainer'),
+        password: DataTypes.STRING
     }, {
         classMethods: {
             associate: function (models) {
-                // associations can be defined here
+                Poll.hasMany(models.Vote);
+                Poll.hasMany(models.Option);
+                Poll.belongsTo(models.Project);
             }
         }
     });
