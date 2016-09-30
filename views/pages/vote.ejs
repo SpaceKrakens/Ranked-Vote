@@ -1,33 +1,31 @@
-
 <div class="container">
-  <div class="row">
-    <div class="col-xs-6">
-      <div id="sortable1" class="connectedSortable list-group">
-        <% for(var i = 1; i < 6; i++){ %>
-        <div class="group">
-        <li class="ui-state-default list-group-item">
-          <span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span> Lorem ipsum <%= i %>
-        </li>
-        <div>
-        <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        In consectetur suscipit mattis. Etiam quis luctus velit, at bibendum elit.
-        </p>
+    <div class="row vote">
+        <div class="col-xs-6">
+            <ul id="sortable1" class="connectedSortable list-group">
+                <% for(var i = 1; i < 6; i++){ %>
+                <div class="group">
+                    <li class="ui-state-default list-group-item group">
+                        <span class="glyphicon glyphicon-resize-vertical pull-right" aria-hidden="true"></span>
+                        <details>
+                            <summary>Lorem ipsum <%= i %></summary>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                In consectetur suscipit mattis. Etiam quis luctus velit, at bibendum elit.</p>
+                        </details>
+
+                    </li>
+                </div>
+                <% } %>
+            </ul>
         </div>
+        <div class="col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Place your vote here</div>
+                <ul id="sortable2" class="connectedSortable list-group">
+                </ul>
+            </div>
+            <input type="button" id="submitButton" value="Submit" class="btn btn-default"/>
         </div>
-        <% } %>
-      </div>
     </div>
-    <div class="col-xs-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">Place your vote here</div>
-          <ul id="sortable2" class="connectedSortable list-group">                  
-          </ul>
-        </div>
-        <input type="button" id="submitButton" value="Submit" class="btn btn-default"/>
-      </div>
-    </div>
-  </div>
 </div>
 
 <script src="voteController.js"></script>
