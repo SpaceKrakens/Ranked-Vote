@@ -36,6 +36,8 @@
     "passport": "^0.3.2",
     "passport-github2": "^0.1.10",
     "router": "^1.1.4",
+    "sequelize": "^3.24.3",
+    "sequelize-cli": "^2.4.0",
     "sqlite3": "^3.1.4"
   }
 }
