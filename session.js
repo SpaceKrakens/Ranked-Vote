@@ -1,4 +1,5 @@
 var passport = require('passport');
+var models = require('./models');
 var GitHubStrategy = require('passport-github2').Strategy;
 var GITHUB_CLIENT_ID = process.env['GITHUB_CLIENT_ID'];
 var GITHUB_CLIENT_SECRET = process.env['GITHUB_CLIENT_SECRET'];
@@ -10,11 +11,13 @@ var GITHUB_CLIENT_SECRET = process.env['GITHUB_CLIENT_SECRET'];
 //   have a database of user records, the complete GitHub profile is serialized
 //   and deserialized.
 passport.serializeUser(function (user, done) {
-    done(null, user);
+    done(null, user.id);
 });
 
-passport.deserializeUser(function (obj, done) {
-    done(null, obj);
+passport.deserializeUser(function(id, done) {
+    models.User.findById(id).then(function (user) {
+        done(null, user);
+    });
 });
 
 

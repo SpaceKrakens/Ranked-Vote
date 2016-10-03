@@ -33,6 +33,24 @@ Object.keys(db).forEach(function (modelName) {
     }
 });
 
+db.Poll.addScope('allowedForUser', function (user) {
+    return {
+        include: [{
+            model: db.Project,
+            include: [{
+                model: db.User,
+                through: db.UserProject,
+            }]
+        }],
+        where: {
+            $or: [
+                {'Project.Users.id': user.id},
+                {access: ['password', 'all']}
+            ]
+        }
+    };
+});
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

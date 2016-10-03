@@ -17,8 +17,6 @@ router.get('/github',
         // function will not be called.
     });
 
-module.exports = router;
-
 /*
  GET /auth/github/callback
  Use passport.authenticate() as route middleware to authenticate the
@@ -26,19 +24,23 @@ module.exports = router;
  login page.  Otherwise, the primary route function will be called,
  which, in this example, will redirect the user to the home page.
  */
+
 router.get('/github/callback',
     session.authenticate('github', {failureRedirect: '/user/login'}),
     function (req, res) {
         models.User.findOrCreate({
             where: {
                 id: req.user.id
+            },
+            defaults: {
+                displayName: req.user.displayName,
+                username: req.user.username,
+                profileUrl: req.user.profileUrl,
+                emails: req.user.emails || []
             }
         }).spread(function (user) {
-            user.displayName = req.user.displayName;
-            user.username = req.user.username;
-            user.profileUrl = req.user.profileUrl;
-            user.emails = req.user.emails || [];
-            user.save();
             res.redirect('/user/account');
         });
     });
+
+module.exports = router;

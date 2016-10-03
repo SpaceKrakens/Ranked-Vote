@@ -28,5 +28,5 @@ function ensureAuthenticated(req, res, next) {
         return next();
     }
     // have a way to return to the last page the user was on when not authenticated after login is done
-    res.redirect('/login');
+    res.redirect('/user/login');
 }
