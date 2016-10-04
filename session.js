@@ -1,8 +1,12 @@
+//@TODO: refactor this to be more consistent with separation of concerns and not load everything from process.env.
+
 var passport = require('passport');
 var models = require('./models');
 var GitHubStrategy = require('passport-github2').Strategy;
 var GITHUB_CLIENT_ID = process.env['GITHUB_CLIENT_ID'];
 var GITHUB_CLIENT_SECRET = process.env['GITHUB_CLIENT_SECRET'];
+var BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
 //   serialize users into and deserialize users out of the session.  Typically,
@@ -28,7 +32,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GitHubStrategy({
         clientID: GITHUB_CLIENT_ID,
         clientSecret: GITHUB_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/auth/github/callback"
+        callbackURL: BASE_URL+"/auth/github/callback"
     },
     function (accessToken, refreshToken, profile, done) {
         // asynchronous verification, for effect...
