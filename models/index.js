@@ -6,8 +6,6 @@ var Sequelize = require('sequelize');
 var basename = path.basename(module.filename);
 var env = process.env.NODE_ENV || 'development';
 var config = require(__dirname + '/../config/config.json')[env];
-// var sqlite3 = require('sqlite3').verbose();
-// var db = new sqlite3.Database(":memory:");
 var db = {};
 
 

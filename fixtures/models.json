@@ -1,0 +1,34 @@
+[
+  {
+    "model": "Project",
+    "data": {
+      "id": 1,
+      "name": "SpaceKrakens/Ranked-Vote (Id 1)",
+      "url": "https://github.com/SpaceKrakens/Ranked-Vote"
+    }
+  },
+  {
+    "model": "Project",
+    "data": {
+      "id": 2,
+      "name": "powli/Ranked-Vote (Id 2)",
+      "url": "https://github.com/powli/Ranked-Vote"
+    }
+  },
+  {
+    "model": "Project",
+    "data": {
+      "id": 3,
+      "name": "TeamPorcupine/ProjectPorcupine (Id 3)",
+      "url": "https://github.com/TeamPorcupine/ProjectPorcupine"
+    }
+  },
+  {
+    "model": "Project",
+    "data": {
+      "id": 4,
+      "name": "powli/ProjectPorcupine (Id 4)",
+      "url": "https://github.com/powli/ProjectPorcupine"
+    }
+  }
+]
