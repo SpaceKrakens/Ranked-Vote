@@ -14,3 +14,9 @@ Run the server:
 # The github client id and secret can be found on the integration page
 GITHUB_CLIENT_ID=... GITHUB_CLIENT_SECRET=... npm start
 ```
+
+Additional options that can be set via enviroment variables:
+```
+PORT - the port node listens on
+NODE_ENV - the enviroment node runs on (development, production and test)
+```
