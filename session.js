@@ -27,8 +27,7 @@ passport.deserializeUser(function(id, done) {
 //   profile), and invoke a callback with a user object.
 passport.use(new GitHubStrategy({
         clientID: GITHUB_CLIENT_ID,
-        clientSecret: GITHUB_CLIENT_SECRET,
-        callbackURL: "/auth/github/callback"
+        clientSecret: GITHUB_CLIENT_SECRET
     },
     function (accessToken, refreshToken, profile, done) {
         // asynchronous verification, for effect...
