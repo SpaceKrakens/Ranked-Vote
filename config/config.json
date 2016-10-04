@@ -12,15 +12,13 @@
     "password": null,
     "database": "database_test",
     "host": "localhost",
-    "dialect": "sqlite",
-    "storage": "./db/database_test.sqlite"
+    "dialect": "postgres"
   },
   "production": {
     "username": "root",
     "password": null,
     "database": "database_production",
     "host": "localhost",
-    "dialect": "sqlite",
-    "storage": "./db/database_production.sqlite"
+    "dialect": "postgres"
   }
 }
