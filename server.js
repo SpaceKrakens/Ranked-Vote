@@ -36,6 +36,7 @@ app.use(function(req, res, next) {
 // no stacktraces leaked to user unless in development environment
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
+    // @TODO create error viewpage
     res.render('error', {
         message: err.message,
         error: (app.get('env') === 'development') ? err : {}

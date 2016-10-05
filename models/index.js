@@ -37,12 +37,13 @@ db.Poll.addScope('allowedForUser', function (user) {
             model: db.Project,
             include: [{
                 model: db.User,
-                through: db.UserProject,
-            }]
+                through: db.UserProject
+            }],
+
         }],
         where: {
             $or: [
-                {'Project.Users.id': user.id},
+                {"$Project.Users.id$": user.id},
                 {access: ['password', 'all']}
             ]
         }

@@ -1,10 +1,23 @@
 [
   {
+    "model": "User",
+    "data": {
+      "id": 4511053,
+      "displayName": "Paul",
+      "username": "powli",
+      "profileUrl": "https://github.com/powli",
+      "emails": "[]",
+      "createdAt": "2016-10-05 20:05:09.189 +00:00",
+      "updatedAt": "2016-10-05 20:05:09.189 +00:00"
+    }
+  },
+  {
     "model": "Project",
     "data": {
       "id": 1,
       "name": "SpaceKrakens/Ranked-Vote (Id 1)",
-      "url": "https://github.com/SpaceKrakens/Ranked-Vote"
+      "url": "https://github.com/SpaceKrakens/Ranked-Vote",
+      "Users": [4511053]
     }
   },
   {
@@ -12,7 +25,8 @@
     "data": {
       "id": 2,
       "name": "powli/Ranked-Vote (Id 2)",
-      "url": "https://github.com/powli/Ranked-Vote"
+      "url": "https://github.com/powli/Ranked-Vote",
+      "Users": [4511053]
     }
   },
   {
@@ -28,7 +42,20 @@
     "data": {
       "id": 4,
       "name": "powli/ProjectPorcupine (Id 4)",
-      "url": "https://github.com/powli/ProjectPorcupine"
+      "url": "https://github.com/powli/ProjectPorcupine",
+      "Users": [4511053]
+    }
+  },
+  {
+    "model": "Poll",
+    "data": {
+      "id": 1,
+      "name": "Poll 1",
+      "description": "",
+      "type": "ranked",
+      "access": "all",
+      "password": "",
+      "Project": 1
     }
   }
 ]
