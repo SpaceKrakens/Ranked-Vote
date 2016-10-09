@@ -1,1 +1,13 @@
-<!--// @TODO fill with live-->
+<h2>Your available polls</h2>
+<div class="list-group">
+    <% for(var poll in polls){ %>
+    <a href="/poll/vote/<%= poll.getId() %>" class="list-group-item">
+        <h4 class="list-group-item-heading">
+            <%= poll.getName() %>
+            <% if(poll.getAccess() == 'password'){ %>
+            <i class="glyphicon glyphicon-lock"></i>
+            <% } %>
+        </h4>
+    </a>
+    <% } %>
+</div>
