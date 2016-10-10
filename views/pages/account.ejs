@@ -2,7 +2,8 @@
     <li class="list-group-item">ID: <%= user.id %></li>
     <li class="list-group-item">Username: <%= user.username %></li>
     <li class="list-group-item">Name: <%= user.displayName %></li>
-    <% for(var mail in user.emails) { %>
+    <% for(i = 0; i < user.emails.length; i++) {
+        var mail = user.emails[i]; %>
     <li class="list-group-item">Email: <%= mail.value %></li>
     <% } %>
 </ul>

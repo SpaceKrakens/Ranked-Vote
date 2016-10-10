@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.TEXT,
             get: function () {
                 var object = JSON.parse(this.getDataValue('emails'));
-                return object;
+                return object || [];
             },
             set: function (array) {
                 var string = JSON.stringify(array);
