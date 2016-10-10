@@ -1,6 +1,6 @@
 <h2>Your available polls</h2>
 <div class="list-group">
-    <% for(var i = 0; i<polls.length; i++){
+    <% for(var i = 0; i < polls.length; i++){
         var poll = polls[i];
     %>
     <a href="/poll/vote/<%= poll.id %>" class="list-group-item">
@@ -10,7 +10,7 @@
             <i class="glyphicon glyphicon-lock"></i>
             <% } %>
         </h4>
+        <%# @TODO add 'display result' button/link(?) %>
     </a>
-    <% console.log(poll); %>
     <% } %>
 </div>

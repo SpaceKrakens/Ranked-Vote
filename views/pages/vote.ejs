@@ -1,15 +1,16 @@
+<%# @TODO support multiple vote types %>
 <div class="container">
     <div class="row vote">
         <div class="col-xs-6">
             <ul id="sortable1" class="connectedSortable list-group">
-                <% for(var i = 1; i < 6; i++){ %>
+                <% for(var i = 0; i < poll.Options.length; i++){
+                var option = poll.Options[i]; %>
                 <div class="group">
                     <li class="ui-state-default list-group-item group">
                         <span class="glyphicon glyphicon-resize-vertical pull-right" aria-hidden="true"></span>
                         <details>
-                            <summary>Lorem ipsum <%= i %></summary>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                In consectetur suscipit mattis. Etiam quis luctus velit, at bibendum elit.</p>
+                            <summary><%= option.name %></summary>
+                            <p><%= option.description %></p>
                         </details>
 
                     </li>
