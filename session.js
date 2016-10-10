@@ -1,3 +1,4 @@
+// @TODO move this to a better place instead of the root
 var passport = require('passport');
 var models = require('./models');
 var GitHubStrategy = require('passport-github2').Strategy;

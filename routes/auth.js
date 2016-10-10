@@ -41,6 +41,8 @@ router.get('/github/callback',
         }).spread(function (user) {
             res.redirect('/user/account');
         });
+        // @TODO pull projects for user from github API (with access type?)
     });
+
 
 module.exports = router;
