@@ -17,7 +17,7 @@ $( "collapsible" ).on( "click", function() {
 
 $("#submitButton").click(function () {
     $.post({
-            url: "vote",
+            url: window.location,
             data: $("#sortable2").sortable("serialize", {key: "sort"}),
             dataType: "json"
         })

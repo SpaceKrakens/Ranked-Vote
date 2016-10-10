@@ -7,20 +7,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Ranked Voting</a>
+        <a class="navbar-brand" href="/">Ranked Voting</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
             <% if (!user) { %>
             <li>
-                <a href="/">Home</a>
-            </li>
-            <li>
                 <a href="/user/login">Log In</a>
             </li>
             <% } else { %>
             <li>
-                <a href="/">Home</a>
+                <a href="/poll">Polls</a>
             </li>
             <li>
                 <a href="/user/account">Account</a>

@@ -1,13 +1,16 @@
 <h2>Your available polls</h2>
 <div class="list-group">
-    <% for(var poll in polls){ %>
-    <a href="/poll/vote/<%= poll.getId() %>" class="list-group-item">
+    <% for(var i = 0; i<polls.length; i++){
+        var poll = polls[i];
+    %>
+    <a href="/poll/vote/<%= poll.id %>" class="list-group-item">
         <h4 class="list-group-item-heading">
-            <%= poll.getName() %>
-            <% if(poll.getAccess() == 'password'){ %>
+            <%= poll.name %>
+            <% if(poll.access == 'password'){ %>
             <i class="glyphicon glyphicon-lock"></i>
             <% } %>
         </h4>
     </a>
+    <% console.log(poll); %>
     <% } %>
 </div>
