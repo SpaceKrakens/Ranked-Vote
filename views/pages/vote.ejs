@@ -1,11 +1,21 @@
 <%# @TODO support multiple vote types %>
+<%
+var options;
+if (vote != null) {
+    options = poll.Options.filter(function (option) {
+        return -1 == vote.data.indexOf(option.id);
+    });
+} else {
+    options = poll.Options;
+}
+%>
 <div class="container">
     <div class="row vote">
         <div class="col-xs-6">
             <ul id="sortable1" class="connectedSortable list-group">
-                <% for(var i = 0; i < poll.Options.length; i++){
-                var option = poll.Options[i]; %>
-                <div class="group">
+                <% for(var i = 0; i < options.length; i++){
+                    var option = options[i]; %>
+                <div id="option_<%= option.id %>" class="group">
                     <li class="ui-state-default list-group-item group">
                         <span class="glyphicon glyphicon-resize-vertical pull-right" aria-hidden="true"></span>
                         <details>
@@ -22,6 +32,30 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Place your vote here</div>
                 <ul id="sortable2" class="connectedSortable list-group">
+
+                    <% if(vote != null){
+                    for(var j = 0; j < vote.data.length; j++){
+                        var chosen = vote.data[j].value;
+                        var name = poll.Options.find(function (option) {
+                            return option.id == chosen;
+                        }).name;
+                        var description = poll.Options.find(function (option) {
+                            return option.id == chosen;
+                        }).description;
+                    %>
+                    <div id="option_<%= chosen %>" class="group">
+                        <li class="ui-state-default list-group-item group">
+                            <span class="glyphicon glyphicon-resize-vertical pull-right" aria-hidden="true"></span>
+                            <details>
+                                <summary><%= name %></summary>
+                                <p><%= description %></p>
+                            </details>
+
+                        </li>
+                    </div>
+                    <% }
+                    }
+                    %>
                 </ul>
             </div>
             <input type="button" id="submitButton" value="Submit" class="btn btn-default"/>

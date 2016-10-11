@@ -8,7 +8,13 @@ module.exports = function (sequelize, DataTypes) {
                 Vote.belongsTo(models.User);
                 Vote.belongsTo(models.Poll);
             }
-        }
+        },
+        indexes: [
+            {
+                unique: true,
+                fields: ['userId', 'pollId']
+            }
+        ]
     });
     return Vote;
 };

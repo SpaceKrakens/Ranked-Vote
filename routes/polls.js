@@ -16,16 +16,40 @@ router.get('/vote/:id', session.ensureAuthenticated, function (req, res) {
         where: {id: req.params.id},
         include: [{model: models.Option}]
     }).then(function (poll) {
-        res.render('pages/vote', {user: req.user, poll: poll});
+        models.Vote.findOne({
+            where: {
+                pollId: poll.id, userId: req.user.id
+            }
+        }).then(function (vote) {
+            res.render('pages/vote', {user: req.user, poll: poll, vote: vote});
+        });
     });
 
-});
+})
+;
 
 // post actual vote for poll
 router.post('/vote/:id', session.ensureAuthenticated, function (req, res) {
-    // @TODO actual saving of vote data depending on poll type
-    res.setHeader('Content-Type', 'routerlication/json');
-    res.send(JSON.stringify({title: "congrats", html: "<p>you won!</p>"}));
+    models.Vote.upsert({
+        pollId: req.params.id,
+        userId: req.user.id,
+        data: JSON.stringify(req.body.sort)
+    }).then(function (created) {
+        res.setHeader('Content-Type', 'routerlication/json');
+        res.send(JSON.stringify({title: "congrats", html: "<p>you won!</p>"}));
+    });
+    // findOrCreate({
+    //     where: {
+    //         userId: req.user.id,
+    //         pollId: req.params.id
+    //     }
+    // }).then(function (vote) {
+    //     vote[0].updateAttributes({data: req.body.sort}).then(function () {
+    //
+    //         res.setHeader('Content-Type', 'routerlication/json');
+    //         res.send(JSON.stringify({title: "congrats", html: "<p>you won!</p>"}));
+    //     });
+    // })// @TODO actual saving of vote data depending on poll type
 });
 
 /* poll results
