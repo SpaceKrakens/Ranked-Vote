@@ -14,15 +14,14 @@ router.get('/', session.ensureAuthenticated, function (req, res) {
 router.get('/vote/:id', session.ensureAuthenticated, function (req, res) {
     models.Poll.findOne({
         where: {id: req.params.id},
-        include: [{model: models.Option}]
+        include: [models.Option, {model: models.User, where: {id: req.user.id}, required: false}]
     }).then(function (poll) {
-        models.Vote.findOne({
-            where: {
-                pollId: poll.id, userId: req.user.id
-            }
-        }).then(function (vote) {
-            res.render('pages/vote', {user: req.user, poll: poll, vote: vote});
-        });
+        var vote = null;
+        poll.Options = models.transformToObject(poll.Options);
+        if(poll.Users.length > 0){
+            vote = poll.Users[0].Vote;
+        }
+        res.render('pages/vote', {user: req.user, poll: poll, vote: vote});
     });
 
 })
@@ -30,26 +29,13 @@ router.get('/vote/:id', session.ensureAuthenticated, function (req, res) {
 
 // post actual vote for poll
 router.post('/vote/:id', session.ensureAuthenticated, function (req, res) {
-    models.Vote.upsert({
-        pollId: req.params.id,
-        userId: req.user.id,
-        data: JSON.stringify(req.body.sort)
-    }).then(function (created) {
-        res.setHeader('Content-Type', 'routerlication/json');
-        res.send(JSON.stringify({title: "congrats", html: "<p>you won!</p>"}));
+    models.Poll.findByPrimary(req.params.id).then(function (poll) {
+        req.user.addPoll(poll, {data: req.body.sort}).then(function (data) {
+            res.setHeader('Content-Type', 'routerlication/json');
+            res.send(JSON.stringify({title: "congrats", html: "<p>you won!</p>"}));
+        })
     });
-    // findOrCreate({
-    //     where: {
-    //         userId: req.user.id,
-    //         pollId: req.params.id
-    //     }
-    // }).then(function (vote) {
-    //     vote[0].updateAttributes({data: req.body.sort}).then(function () {
-    //
-    //         res.setHeader('Content-Type', 'routerlication/json');
-    //         res.send(JSON.stringify({title: "congrats", html: "<p>you won!</p>"}));
-    //     });
-    // })// @TODO actual saving of vote data depending on poll type
+    // @TODO actual saving of vote data depending on poll type
 });
 
 /* poll results

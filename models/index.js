@@ -50,6 +50,17 @@ db.Poll.addScope('allowedForUser', function (user) {
     };
 });
 
+db.transformToObject = function(array) {
+    var result = {};
+    result.ids = Array();
+    for(var i = 0; i < array.length; i++){
+        var obj = array[i];
+        result.ids.push(obj.id);
+        result[obj.id] = obj;
+    }
+    return result;
+}
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

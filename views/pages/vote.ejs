@@ -1,20 +1,25 @@
 <%# @TODO support multiple vote types %>
 <%
 var options;
+var selected = null;
 if (vote != null) {
-    options = poll.Options.filter(function (option) {
-        return -1 == vote.data.indexOf(option.id);
+    options = poll.Options.ids.filter(function (option) {
+        return -1 == vote.data.indexOf(option.toString());
     });
+    console.log(vote.data);
 } else {
-    options = poll.Options;
+    options = poll.Options.ids;
 }
+console.log(selected);
+
+
 %>
 <div class="container">
     <div class="row vote">
         <div class="col-xs-6">
             <ul id="sortable1" class="connectedSortable list-group">
                 <% for(var i = 0; i < options.length; i++){
-                    var option = options[i]; %>
+                    var option = poll.Options[options[i]]; %>
                 <div id="option_<%= option.id %>" class="group">
                     <li class="ui-state-default list-group-item group">
                         <span class="glyphicon glyphicon-resize-vertical pull-right" aria-hidden="true"></span>
@@ -35,20 +40,14 @@ if (vote != null) {
 
                     <% if(vote != null){
                     for(var j = 0; j < vote.data.length; j++){
-                        var chosen = vote.data[j].value;
-                        var name = poll.Options.find(function (option) {
-                            return option.id == chosen;
-                        }).name;
-                        var description = poll.Options.find(function (option) {
-                            return option.id == chosen;
-                        }).description;
+                        var chosen = poll.Options[vote.data[j]];
                     %>
-                    <div id="option_<%= chosen %>" class="group">
+                    <div id="option_<%= chosen.id %>" class="group">
                         <li class="ui-state-default list-group-item group">
                             <span class="glyphicon glyphicon-resize-vertical pull-right" aria-hidden="true"></span>
                             <details>
-                                <summary><%= name %></summary>
-                                <p><%= description %></p>
+                                <summary><%= chosen.name %></summary>
+                                <p><%= chosen.description %></p>
                             </details>
 
                         </li>
