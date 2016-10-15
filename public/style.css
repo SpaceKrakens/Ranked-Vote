@@ -1,0 +1,15 @@
+#sortable2 {
+    background: #eee;
+    padding: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100%;
+}
+
+.vote li > details {
+    margin-top: -1em;
+}
+
+.vote li > span, .vote li > details, .vote li > details summary, .vote li > details p {
+    display: inline-block;
+}
