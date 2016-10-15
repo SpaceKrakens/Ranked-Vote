@@ -1,0 +1,52 @@
+<form class="form-horizontal" id="main">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Create Poll</legend>
+
+<!-- Text input title-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="pollName">Name</label>  
+  <div class="col-md-5">
+  <input id="pollName" name="pollName" placeholder="Name of your poll" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+
+<div data-role="dynamic-fields">
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="field-name">Field Name</label>
+      <div class="col-md-5">
+        <input type="text" class="form-control" id="field-name" placeholder="Field Name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="field-value">Field Value</label>
+      <div class="col-md-5">
+        <input type="text" class="form-control" id="field-value" placeholder="Field Value">
+      </div>
+    </div>
+    <label class="col-md-4 control-label" for="remove"></label>
+    <div class="col-md-4">
+    <button class="btn btn-danger" id="remove" data-role="remove">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+    <button class="btn btn-primary" data-role="add">
+      <span class="glyphicon glyphicon-plus"></span>
+    </button>
+    </div>
+</div>  <!-- /div[data-role="dynamic-fields"] -->
+
+
+<!-- Submit Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-default">Submit</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+<script src="/createController.js"></script>
