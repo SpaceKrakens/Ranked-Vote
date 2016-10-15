@@ -13,31 +13,34 @@
   </div>
 </div>
 
+<!-- Text input option title-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="optionName">Option x Name</label>  
+  <div class="col-md-4">
+  <input id="optionName" name="optionName" placeholder="Name of the option" class="form-control input-md" type="text">
+    
+  </div>
+</div>
 
-<div data-role="dynamic-fields">
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="field-name">Field Name</label>
-      <div class="col-md-5">
-        <input type="text" class="form-control" id="field-name" placeholder="Field Name">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="field-value">Field Value</label>
-      <div class="col-md-5">
-        <input type="text" class="form-control" id="field-value" placeholder="Field Value">
-      </div>
-    </div>
-    <label class="col-md-4 control-label" for="remove"></label>
-    <div class="col-md-4">
-    <button class="btn btn-danger" id="remove" data-role="remove">
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="description">Description</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="description" name="description"></textarea>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="remove"></label> 
+  <div class="col-md-4">
+    <button class="btn btn-danger" id="remove" onclick="removeField()">
       <span class="glyphicon glyphicon-remove"></span>
     </button>
-    <button class="btn btn-primary" data-role="add">
+    <button class="btn btn-primary" onclick="addField()">
       <span class="glyphicon glyphicon-plus"></span>
     </button>
-    </div>
-</div>  <!-- /div[data-role="dynamic-fields"] -->
-
+  </div>
+</div>
 
 <!-- Submit Button -->
 <div class="form-group">
