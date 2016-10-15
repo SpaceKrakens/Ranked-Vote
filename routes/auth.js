@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var session = require('../session');
 var models = require('../models');
+var importer = require('../models/importer/project');
 
 /*
  GET /auth/github
@@ -40,6 +41,7 @@ router.get('/github/callback',
             }
         }).spread(function (user) {
             res.redirect('/user/account');
+            importer.importForUser(req.user);
         });
         // @TODO pull projects for user from github API (with access type?)
     });

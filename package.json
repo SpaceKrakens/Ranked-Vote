@@ -30,6 +30,7 @@
     "express": "^4.14.0",
     "express-partials": "^0.3.0",
     "express-session": "^1.14.1",
+    "github": "^5.2.2",
     "helmet": "^2.2.0",
     "jquery": "^3.1.0",
     "jquery-ui": "^1.12.1",
