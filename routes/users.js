@@ -15,6 +15,10 @@ router.get('/logout', function (req, res) {
     res.redirect('/');
 });
 
+router.get('/create', function (req, res) {
+    res.render('pages/create', {user: req.user});
+});
+
 
 module.exports = router;
 
