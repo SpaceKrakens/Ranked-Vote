@@ -12,11 +12,12 @@ var GITHUB_CLIENT_SECRET = process.env['GITHUB_CLIENT_SECRET'];
 //   have a database of user records, the complete GitHub profile is serialized
 //   and deserialized.
 passport.serializeUser(function (user, done) {
-    done(null, user.id);
+    done(null, {id: user.id, token: user.token});
 });
 
-passport.deserializeUser(function(id, done) {
-    models.User.findById(id).then(function (user) {
+passport.deserializeUser(function(obj, done) {
+    models.User.findById(obj.id).then(function (user) {
+        user.token = obj.token;
         done(null, user);
     });
 });
@@ -38,6 +39,7 @@ passport.use(new GitHubStrategy({
             // represent the logged-in user.  In a typical application, you would want
             // to associate the GitHub account with a user record in your database,
             // and return that user instead.
+            profile.token = accessToken;
             return done(null, profile);
         });
     }
