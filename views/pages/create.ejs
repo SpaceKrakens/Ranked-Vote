@@ -13,30 +13,34 @@
   </div>
 </div>
 
-<!-- Text input option title-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="optionName">Option x Name</label>  
-  <div class="col-md-4">
-  <input id="optionName" name="optionName" placeholder="Name of the option" class="form-control input-md" type="text">
-    
-  </div>
+<div id="optionsContainer">
+    <div>
+        <!-- Text input option title-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="optionName_0">Option x Name</label>  
+          <div class="col-md-4">
+          <input id="optionName_0" name="option[0][name]" placeholder="Name of the option" class="form-control input-md" type="text">
+            
+          </div>
+        </div>
+
+        <!-- Textarea -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="description_0">Description</label>
+          <div class="col-md-4">                     
+            <textarea class="form-control" id="description_0" name="description[0][description]"></textarea>
+          </div>
+        </div>
+    </div>
 </div>
 
-<!-- Textarea -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="description">Description</label>
-  <div class="col-md-4">                     
-    <textarea class="form-control" id="description" name="description"></textarea>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="remove"></label> 
+  <label class="col-md-4 control-label" for="removeButton"></label> 
   <div class="col-md-4">
-    <button class="btn btn-danger" id="remove" onclick="removeField()">
+    <button class="btn btn-danger" id="removeButton">
       <span class="glyphicon glyphicon-remove"></span>
     </button>
-    <button class="btn btn-primary" onclick="addField()">
+    <button class="btn btn-primary" id="addButton">
       <span class="glyphicon glyphicon-plus"></span>
     </button>
   </div>
@@ -52,4 +56,26 @@
 
 </fieldset>
 </form>
+
+<!-- The invisible prototype to clone -->
+
+<!-- Text input option title-->
+<div id="optionPrototype">
+<div class="form-group">
+  <label class="col-md-4 control-label" for="optionName_">Option x Name</label>  
+  <div class="col-md-4">
+  <input id="optionName_" name="optionName" placeholder="Name of the option" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="description_">Description</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="description_" name="description"></textarea>
+  </div>
+</div>
+</div>
+
 <script src="/createController.js"></script>

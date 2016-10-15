@@ -13,3 +13,7 @@
 .vote li > span, .vote li > details, .vote li > details summary, .vote li > details p {
     display: inline-block;
 }
+#optionPrototype {
+display: none;
+}
+
