@@ -1,14 +1,16 @@
-
 var id = 1;
 
 $("#addButton").click(function () {
-    var doc =$("optionPrototype").clone();
-    doc.$("label").each( function (element) {
-        element.attr("for").append(id);
+    var option = $("#optionPrototype").clone();
+    option.find("label").attr("for", function (i, val) {
+        return val + id;
     });
-    doc.$(".form-control").each( function (element) {
-        element.attr("id").append(id);
+    option.find(".form-control").attr("id", function (i, val) {
+        return val + id;
     });
-    $("#optionsContainer").appendChild(doc);
-
+    option.find(".form-control").attr("name", function (i, val) {
+        return "option[" + id + "][" + val + "]";
+    });
+    $("#optionsContainer").append(option.html());
+    id++;
 });
