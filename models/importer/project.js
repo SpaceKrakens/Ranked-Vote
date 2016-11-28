@@ -11,10 +11,26 @@ var repoImporter = {
             user: user.username,
             type: "all"
         }, function (err, res) {
-            // @TODO save Projects and associate them to user
-            console.log(res);
+            console.log("{" + res + "}");
+            console.log("{" + err + "}");
+            if (err == null) {
+                var data = repoImporter.getData(res);   
+                models.Project.bulkCreate(data, {ignoreDuplicates: true});
+            }
+            else {
+                console.error("Gateway Timeout")
+            };
+        });        
+    },
+    // Returns the data we need for the database (and in correct format)
+    getData: function (projects) {
+        var returnArray = [];        
+        projects.forEach(function(element) {
+            var keyVal = {id: element.id, name: element.name, url: element.url};
+            returnArray.push(keyVal);
         });
-    }
+        return returnArray;
+    },
 };
 
 module.exports = repoImporter;
