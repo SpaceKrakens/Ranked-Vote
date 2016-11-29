@@ -15,7 +15,7 @@ var repoImporter = {
             console.log("{" + err + "}");
             if (err == null) {
                 var data = repoImporter.getData(res);   
-                models.Project.bulkCreate(data, {ignoreDuplicates: true});
+                models.Project.bulkCreate(data, {});
             }
             else {
                 console.error("Gateway Timeout")
