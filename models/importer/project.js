@@ -15,8 +15,7 @@ var repoImporter = {
             console.log("{" + err + "}");
             if (err == null) {
                 var data = repoImporter.getData(res);
-                //@TODO - Figure out how to ignore duplicates with postgress.   
-                //models.Project.bulkCreate(data, {});
+                // @TODO -  Change this to bulk insert if we are not using postgress.
                 data.forEach(function(element) {
                     models.Project.upsert(element);                    
                 }, this);
