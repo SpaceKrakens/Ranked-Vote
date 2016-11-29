@@ -14,8 +14,9 @@ var repoImporter = {
             console.log("{" + res + "}");
             console.log("{" + err + "}");
             if (err == null) {
-                var data = repoImporter.getData(res);   
-                models.Project.bulkCreate(data, {ignoreDuplicates: true});
+                var data = repoImporter.getData(res);
+                //@TODO - Figure out how to ignore duplicates with postgress.   
+                models.Project.bulkCreate(data, {});
             }
             else {
                 console.error("Gateway Timeout")
