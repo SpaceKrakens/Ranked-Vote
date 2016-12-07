@@ -11,6 +11,7 @@ var GITHUB_CLIENT_SECRET = process.env['GITHUB_CLIENT_SECRET'];
 //   the user by ID when deserializing.  However, since this example does not
 //   have a database of user records, the complete GitHub profile is serialized
 //   and deserialized.
+
 passport.serializeUser(function (user, done) {
     done(null, {id: user.id, token: user.token});
 });
@@ -28,9 +29,9 @@ passport.deserializeUser(function(obj, done) {
 //   credentials (in this case, an accessToken, refreshToken, and GitHub
 //   profile), and invoke a callback with a user object.
 passport.use(new GitHubStrategy({
-        clientID: GITHUB_CLIENT_ID,
-        clientSecret: GITHUB_CLIENT_SECRET
-    },
+    clientID: GITHUB_CLIENT_ID,
+    clientSecret: GITHUB_CLIENT_SECRET
+},
     function (accessToken, refreshToken, profile, done) {
         // asynchronous verification, for effect...
         process.nextTick(function () {
@@ -54,7 +55,8 @@ passport.ensureAuthenticated = function(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    // have a way to return to the last page the user was on when not authenticated after login is done
+    // have a way to return to the last page the user was on when not authenticated
+    // after login is done
     res.redirect('/user/login');
 };
 

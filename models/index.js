@@ -8,11 +8,12 @@ var env = process.env.NODE_ENV || 'development';
 var config = require(__dirname + '/../config/config.json')[env];
 var db = {};
 
+var sequelize;
 
 if (config.use_env_variable) {
-    var sequelize = new Sequelize(process.env[config.use_env_variable]);
+    sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
-    var sequelize = new Sequelize(config.database, config.username, config.password, config);
+    sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
 fs
@@ -43,7 +44,7 @@ db.Poll.addScope('allowedForUser', function (user) {
         }],
         where: {
             $or: [
-                {"$Project.Users.id$": user.id},
+                {'$Project.Users.id$': user.id},
                 {access: ['password', 'all']}
             ]
         }
@@ -53,13 +54,13 @@ db.Poll.addScope('allowedForUser', function (user) {
 db.transformToObject = function(array) {
     var result = {};
     result.ids = Array();
-    for(var i = 0; i < array.length; i++){
+    for (var i = 0; i < array.length; i++){
         var obj = array[i];
         result.ids.push(obj.id);
         result[obj.id] = obj;
     }
     return result;
-}
+};
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

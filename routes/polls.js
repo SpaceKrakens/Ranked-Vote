@@ -3,6 +3,8 @@ var router = express.Router();
 var models = require('../models');
 var session = require('../session');
 
+// @TODO Massive cleanup...
+
 // list available polls for the user
 router.get('/', session.ensureAuthenticated, function (req, res) {
     models.Poll.scope({method: ['allowedForUser', req.user]}).findAll().then(function (userPolls) {
@@ -18,7 +20,7 @@ router.get('/vote/:id', session.ensureAuthenticated, function (req, res) {
     }).then(function (poll) {
         var vote = null;
         poll.Options = models.transformToObject(poll.Options);
-        if(poll.Users.length > 0){
+        if (poll.Users.length > 0){
             vote = poll.Users[0].Vote;
         }
         res.render('pages/vote', {user: req.user, poll: poll, vote: vote});
@@ -32,8 +34,8 @@ router.post('/vote/:id', session.ensureAuthenticated, function (req, res) {
     models.Poll.findByPrimary(req.params.id).then(function (poll) {
         req.user.addPoll(poll, {data: req.body.sort}).then(function (data) {
             res.setHeader('Content-Type', 'routerlication/json');
-            res.send(JSON.stringify({title: "congrats", html: "<p>you won!</p>"}));
-        })
+            res.send(JSON.stringify({title: 'congrats', html: '<p>you won!</p>'}));
+        });
     });
     // @TODO actual saving of vote data depending on poll type
 });
@@ -41,7 +43,8 @@ router.post('/vote/:id', session.ensureAuthenticated, function (req, res) {
 /* poll results
  * @TODO fill with live
  * @TODO determine if authentification should be required
- * @TODO determine if 'live'/intermediate results should be shown or not (maybe only if no deadline is configured)
+ * @TODO determine if 'live'/intermediate results should be shown or not
+ * (maybe only if no deadline is configured)
  */
 router.get('/result/:id', function (req, res) {
     // do stuff
