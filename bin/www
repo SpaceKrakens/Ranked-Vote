@@ -8,7 +8,6 @@ var app = require('../server');
 var http = require('http');
 var models = require('../models');
 
-
 /**
  * Get port from environment and store in Express.
  */
@@ -24,7 +23,7 @@ app.set('env', env);
 var server = http.createServer(app);
 
 models.sequelize.sync().then(function () {
-    if (env == 'development') {
+    if (env === 'development') {
         var fixtures = require('sequelize-fixtures');
         fixtures.loadFile('fixtures/*.json', models).then(function () {
             initServer();
@@ -80,16 +79,16 @@ function onError(error) {
 
     // handle specific listen errors with friendly messages
     switch (error.code) {
-        case 'EACCES':
-            console.error(bind + ' requires elevated privileges');
-            process.exit(1);
-            break;
-        case 'EADDRINUSE':
-            console.error(bind + ' is already in use');
-            process.exit(1);
-            break;
-        default:
-            throw error;
+    case 'EACCES':
+        console.error(bind + ' requires elevated privileges');
+        process.exit(1);
+        break;
+    case 'EADDRINUSE':
+        console.error(bind + ' is already in use');
+        process.exit(1);
+        break;
+    default:
+        throw error;
     }
 }
 

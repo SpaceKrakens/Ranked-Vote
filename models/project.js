@@ -1,15 +1,15 @@
 'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var Project = sequelize.define('Project', {
-    name: DataTypes.STRING,
-    url: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        Project.hasMany(models.Poll);
-        Project.belongsToMany(models.User, {through: models.UserProject});
-      }
-    }
-  });
-  return Project;
+module.exports = function (sequelize, DataTypes) {
+    var Project = sequelize.define('Project', {
+        name: DataTypes.STRING,
+        url: DataTypes.STRING
+    }, {
+        classMethods: {
+            associate: function (models) {
+                Project.hasMany(models.Poll);
+                Project.belongsToMany(models.User, {through: models.UserProject});
+            }
+        }
+    });
+    return Project;
 };
