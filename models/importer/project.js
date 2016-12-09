@@ -11,15 +11,18 @@ var repoImporter = {
             user: user.username,
             type: 'all'
         }, function (err, res) {
-            console.log('{' + res + '}');
-            console.log('{' + err + '}');
             if (err == null) {
                 var data = repoImporter.getData(res);
-                // @TODO -  Change this to bulk insert if we are not using postgress.
-                data.forEach(function(element) {
-                    models.Project.upsert(element);
-                }, this);
-            }            else {
+
+                // Check if we are using mysql and use the bulk update function
+                if (models.sequelize.getDialect() === 'mysql') {
+                    models.Project.update(data);
+                } else {
+                    data.forEach(function(element) {
+                        models.Project.upsert(element);
+                    }, this);
+                };
+            } else {
                 console.error('Gateway Timeout');
             };
         });
