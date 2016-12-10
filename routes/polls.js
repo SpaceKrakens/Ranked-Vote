@@ -20,7 +20,7 @@ router.get('/vote/:id', session.ensureAuthenticated, function (req, res) {
     }).then(function (poll) {
         var vote = null;
         poll.Options = models.transformToObject(poll.Options);
-        if (poll.Users.length > 0){
+        if (poll.Users.length > 0) {
             vote = poll.Users[0].Vote;
         }
         res.render('pages/vote', {user: req.user, poll: poll, vote: vote});
@@ -32,7 +32,7 @@ router.get('/vote/:id', session.ensureAuthenticated, function (req, res) {
 // post actual vote for poll
 router.post('/vote/:id', session.ensureAuthenticated, function (req, res) {
     models.Poll.findByPrimary(req.params.id).then(function (poll) {
-        req.user.addPoll(poll, {data: req.body.sort}).then(function (data) {
+        req.user.addPoll(poll, {data: req.body.sort}).then(function () {
             res.setHeader('Content-Type', 'routerlication/json');
             res.send(JSON.stringify({title: 'congrats', html: '<p>you won!</p>'}));
         });
@@ -48,6 +48,18 @@ router.post('/vote/:id', session.ensureAuthenticated, function (req, res) {
  */
 router.get('/result/:id', function (req, res) {
     // do stuff
+});
+
+// create new poll
+router.get('/create', function (req, res) {
+    req.user.getProjects().then(function (projects) {
+        res.render('pages/create', {user: req.user, projects: projects});
+    });
+});
+
+// receive new poll
+router.post('/create', function (req, res) {
+    /* @TODO: fill with magic */
 });
 
 module.exports = router;
