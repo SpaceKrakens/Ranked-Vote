@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <% include partials/head.ejs %>
-    </head>
-    <body>
-        <nav class="navbar navbar-inverse avbar-default">
-            <% include partials/header.ejs %>
-        </nav>
-        <div class="container">
-            <%- body %>
-        </div>
-        <% include partials/footer.ejs %>
-    </body>
+<head>
+    <% include partials/head.ejs %>
+</head>
+<body>
+<nav class="navbar navbar-inverse avbar-default">
+    <% include partials/header.ejs %>
+</nav>
+<div class="container messages">
+    <%- messager('partials/messages', Object.assign(locals, {layout: false})) %>
+</div>
+<div class="container">
+    <%- body %>
+</div>
+<% include partials/footer.ejs %>
+</body>
 </html>
