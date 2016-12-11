@@ -42,24 +42,38 @@ router.post('/vote/:id', session.ensureAuthenticated, function (req, res) {
 
 /* poll results
  * @TODO fill with live
- * @TODO determine if authentification should be required
  * @TODO determine if 'live'/intermediate results should be shown or not
  * (maybe only if no deadline is configured)
  */
-router.get('/result/:id', function (req, res) {
+router.get('/result/:id', session.ensureAuthenticated, function (req, res) {
     // do stuff
 });
 
 // create new poll
-router.get('/create', function (req, res) {
+router.get('/create', session.ensureAuthenticated, function (req, res) {
     req.user.getProjects().then(function (projects) {
         res.render('pages/create', {user: req.user, projects: projects});
     });
 });
 
 // receive new poll
-router.post('/create', function (req, res) {
+router.post('/create', session.ensureAuthenticated, function (req, res) {
     /* @TODO: fill with magic */
+    data = req.body;
+    models.Poll.create({
+        name: data.name,
+        description: data.description || '',
+        type: data.type,
+        access: data.access,
+        password: data.password || '',
+        Options: data.option.map((arr) => Object.assign({}, arr)),
+        ProjectId: data.project
+    }, {include: [models.Option, models.Project]}).then(function (savedPoll) {
+        req.flash('success', 'Poll %s created!', savedPoll.name);
+        res.redirect('/poll');
+    });
+
+
 });
 
 module.exports = router;
