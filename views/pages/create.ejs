@@ -1,81 +1,143 @@
-<form class="form-horizontal" id="main">
-<fieldset>
+<form class="form-horizontal" id="main" method="post">
+    <fieldset>
 
-<!-- Form Name -->
-<legend>Create Poll</legend>
+        <!-- Form Name -->
+        <legend>Create Poll</legend>
 
-<!-- Text input title-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="pollName">Name</label>  
-  <div class="col-md-5">
-  <input id="pollName" name="pollName" placeholder="Name of your poll" class="form-control input-md" type="text">
-    
-  </div>
-</div>
-
-<div id="optionsContainer">
-    <div>
-        <!-- Text input option title-->
+        <!-- Text input title-->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="optionName_0">Option x Name</label>  
-          <div class="col-md-4">
-          <input id="optionName_0" name="option[0][name]" placeholder="Name of the option" class="form-control input-md" type="text">
-            
-          </div>
+            <label class="col-md-4 control-label" for="name">Name</label>
+            <div class="col-md-5">
+                <input id="name" name="name" placeholder="Name of your poll" class="form-control input-md"
+                       type="text" required>
+
+            </div>
         </div>
 
-        <!-- Textarea -->
+        <!-- Text input description-->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="description_0">Description</label>
-          <div class="col-md-4">                     
-            <textarea class="form-control" id="description_0" name="option[0][description]"></textarea>
-          </div>
+            <label class="col-md-4 control-label" for="description">Name</label>
+            <div class="col-md-5">
+                <textarea id="description" name="description" placeholder="Describe your poll"
+                          class="form-control"></textarea>
+
+            </div>
         </div>
-    </div>
-</div>
 
-<div class="form-group">
-  <label class="col-md-4 control-label" for="removeButton"></label> 
-  <div class="col-md-4">
-    <button class="btn btn-danger" id="removeButton" type="button">
-      <span class="glyphicon glyphicon-remove"></span>
-    </button>
-    <button class="btn btn-primary" id="addButton" type="button">
-      <span class="glyphicon glyphicon-plus"></span>
-    </button>
-  </div>
-</div>
+        <!-- Select associated Project -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="project">Project</label>
+            <div class="col-md-5">
+                <select id="project" name="project" class="form-control input-md" required >
+                    <% for(var i = 0; i < projects.length; i++) {
+                        var project = projects[i];
+                    %>
+                    <option value="<%= project.id %>" name="<%= project.name %>"><%= project.name %></option>
+                    <% } %>
+                </select>
 
-<!-- Submit Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="submit"></label>
-  <div class="col-md-4">
-    <button id="submit" name="submit" class="btn btn-default">Submit</button>
-  </div>
-</div>
+            </div>
+        </div>
 
-</fieldset>
+        <!-- Select access type @TODO implement additional access types -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="access">Access type</label>
+            <div class="col-md-5">
+                <select id="access" name="access" class="form-control input-md">
+                    <option value="all">All</option>
+                    <option value="password">Password</option>
+                </select>
+
+            </div>
+        </div>
+
+        <!-- Passwort in case access level requires it -->
+        <div class="form-group" id="password-group" style="display:none;">
+            <label class="col-md-4 control-label" for="access">Password</label>
+            <div class="col-md-5">
+                <input id="password" name="password" placeholder="password" class="form-control input-md required"
+                       required disabled="disabled" type="text">
+
+            </div>
+        </div>
+
+        <!-- Select poll type @TODO implement other poll types than ranked voting -->
+        <div class="form-group hidden">
+            <label class="col-md-4 control-label" for="type">Project</label>
+            <div class="col-md-5">
+                <select id="type" name="type" class="form-control input-md">
+                    <option value="ranked" selected>Ranked</option>
+                </select>
+
+            </div>
+        </div>
+
+
+        <div id="optionsContainer">
+            <div>
+                <!-- Text input option title-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="optionName_0">Option x Name</label>
+                    <div class="col-md-4">
+                        <input id="optionName_0" name="option[0][name]" placeholder="Name of the option"
+                               class="form-control input-md" type="text" required>
+
+                    </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="description_0">Description</label>
+                    <div class="col-md-4">
+                        <textarea class="form-control" id="description_0" name="option[0][description]"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="removeButton"></label>
+            <div class="col-md-4">
+                <button class="btn btn-danger" id="removeButton" type="button">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+                <button class="btn btn-primary" id="addButton" type="button">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="submit"></label>
+            <div class="col-md-4">
+                <button id="submit" name="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+
+    </fieldset>
 </form>
 
 <!-- The invisible prototype to clone -->
 
 <!-- Text input option title-->
 <div id="optionPrototype">
-<div class="form-group">
-  <label class="col-md-4 control-label" for="optionName_">Option x Name</label>  
-  <div class="col-md-4">
-  <input id="optionName_" name="name" placeholder="Name of the option" class="form-control input-md" type="text">
-    
-  </div>
-</div>
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="optionName_">Option x Name</label>
+        <div class="col-md-4">
+            <input id="optionName_" name="name" placeholder="Name of the option" class="form-control input-md"
+                   type="text">
 
-<!-- Textarea -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="description_">Description</label>
-  <div class="col-md-4">                     
-    <textarea class="form-control" id="description_" name="description"></textarea>
-  </div>
-</div>
+        </div>
+    </div>
+
+    <!-- Textarea -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="description_">Description</label>
+        <div class="col-md-4">
+            <textarea class="form-control" id="description_" name="description"></textarea>
+        </div>
+    </div>
 </div>
 
 <script src="/createController.js"></script>

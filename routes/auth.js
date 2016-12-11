@@ -40,6 +40,7 @@ router.get('/github/callback',
                 emails: req.user.emails || []
             }
         }).spread(function (user) {
+            req.flash('success', 'Successful login!');
             res.redirect('/user/account');
             importer.importForUser(req.user);
         });

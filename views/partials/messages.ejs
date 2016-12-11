@@ -1,0 +1,9 @@
+<div id="messages" class="row">
+    <% Object.keys(messages).forEach(function (type) { %>
+    <div class="alert alert-<%= type %> alert-dismissable">
+        <% messages[type].forEach(function (message) { %>
+        <p><%= message %></p>
+        <% }) %>
+    </div>
+    <% }) %>
+</div>
