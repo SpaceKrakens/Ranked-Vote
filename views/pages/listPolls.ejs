@@ -1,4 +1,7 @@
-<h2>Your available polls</h2>
+<div class="row">
+    <div class="col-md-5"><h1>Your available polls </h1></div>
+    <div class="col-md-2 col-md-offset-5"><a href="/poll/create" class="btn btn-primary">Create your own poll!</a></div>
+</div>
 <div class="list-group">
     <% for(var i = 0; i < polls.length; i++){
         var poll = polls[i];
