@@ -35,8 +35,8 @@ var repoImporter = {
     // Returns the data we need for the database (and in correct format)
     getData: function (projects) {
         return projects.reduce(function (acc, curr) {
-            var keyVal = {id: curr.id, name: curr.name, url: curr.url};
-            acc.push(keyVal);
+            acc.push({id: curr.id, name: curr.name, url: curr.url});
+            return acc;
         }, []);
     },
 };

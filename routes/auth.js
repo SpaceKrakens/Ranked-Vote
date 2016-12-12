@@ -42,7 +42,7 @@ router.get('/github/callback',
         }).spread(function (user) {
             req.flash('success', 'Successful login!');
             res.redirect('/user/account');
-            importer.importForUser(req.user);
+            importer.importForUser(user );
         });
         // @TODO pull projects for user from github API (with access type?)
     });
