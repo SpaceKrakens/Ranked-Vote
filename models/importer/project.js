@@ -23,7 +23,8 @@ var repoImporter = {
                     }, this);
 
                 } else {
-                    models.Project.bulkCreate(data, {updateOnDuplicate: []}).then(function (projects) {
+                    models.Project.bulkCreate(data, {updateOnDuplicate: []})
+                    .then(function (projects) {
                         user.setProjects(projects);
                     });
                 }
