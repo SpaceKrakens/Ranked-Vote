@@ -6,6 +6,14 @@
     width: 100%;
 }
 
+#sortable1 {
+    background: #eee;
+    padding: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100%;
+}
+
 .vote li > details {
     margin-top: -1em;
 }
