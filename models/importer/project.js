@@ -16,26 +16,28 @@ var repoImporter = {
 
                 // Check if we are using mysql and use the bulk update function
                 if (models.sequelize.getDialect() === 'postgress') {
-                    data.forEach(function(element) {
-                        models.Project.upsert(element);
+                    data.forEach(function (element) {
+                        models.Project.upsert(element).then(function (project) {
+                            user.addProject(project);
+                        });
                     }, this);
 
                 } else {
-                    models.Project.bulkCreate(data, {updateOnDuplicate: []});
-                };
+                    models.Project.bulkCreate(data, {updateOnDuplicate: []}).then(function (projects) {
+                        user.setProjects(projects);
+                    });
+                }
             } else {
                 console.error('Gateway Timeout');
-            };
+            }
         });
     },
     // Returns the data we need for the database (and in correct format)
     getData: function (projects) {
-        var returnArray = [];
-        projects.forEach(function(element) {
-            var keyVal = {id: element.id, name: element.name, url: element.url};
-            returnArray.push(keyVal);
-        });
-        return returnArray;
+        return projects.reduce(function (acc, curr) {
+            var keyVal = {id: curr.id, name: curr.name, url: curr.url};
+            acc.push(keyVal);
+        }, []);
     },
 };
 
