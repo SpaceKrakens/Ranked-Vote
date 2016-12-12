@@ -21,7 +21,7 @@ var repoImporter = {
                     }, this);
 
                 } else {
-                    models.Project.bulkCreate(data);
+                    models.Project.bulkCreate(data, {updateOnDuplicate: []});
                 };
             } else {
                 console.error('Gateway Timeout');
