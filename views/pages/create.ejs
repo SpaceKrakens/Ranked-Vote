@@ -32,7 +32,8 @@
                     <% for(var i = 0; i < projects.length; i++) {
                         var project = projects[i];
                     %>
-                    <option value="<%= project.id %>" name="<%= project.owner + ' - ' + project.name %>"><%= project.owner + '-' + project.name %></option>
+                    <option value="<%= project.id %>" name="<%= project.name %>">
+                    <%= project.name + '/' + project.owner %></option>
                     <% } %>
                 </select>
 
