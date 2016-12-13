@@ -22,7 +22,7 @@ app.set('env', env);
  */
 var server = http.createServer(app);
 
-models.sequelize.sync().then(function () {
+models.sequelize.sync({force: true}).then(function () {
     if (env === 'development') {
         var fixtures = require('sequelize-fixtures');
         fixtures.loadFile('fixtures/*.json', models).then(function () {
