@@ -9,6 +9,7 @@
     <a href="/poll/vote/<%= poll.id %>" class="list-group-item">
         <h4 class="list-group-item-heading">
             <%= poll.name %>
+            <small><%= poll.Project.getFullName() %></small>
             <% if(poll.access == 'password'){ %>
             <i class="glyphicon glyphicon-lock"></i>
             <% } %>

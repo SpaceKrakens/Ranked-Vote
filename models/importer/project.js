@@ -16,18 +16,14 @@ var repoImporter = {
 
                 // Check if we are using mysql and use the bulk update function
                 if (models.sequelize.getDialect() !== 'mysql') {
-                    data.forEach(function (element) {
-                        models.Project.upsert(element).then(function (project) {
-                            user.addProject(project);
-                        });
-                    }, this);
-
+                    option = {ignoreDuplicates: true};
                 } else {
-                    models.Project.bulkCreate(data, {updateOnDuplicate: []})
+                    option = {updateOnDuplicate: []};
+                }
+                models.Project.bulkCreate(data, option)
                     .then(function (projects) {
                         user.setProjects(projects);
                     });
-                }
             } else {
                 console.error('Gateway Timeout');
             }

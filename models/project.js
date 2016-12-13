@@ -10,7 +10,12 @@ module.exports = function (sequelize, DataTypes) {
                 Project.hasMany(models.Poll);
                 Project.belongsToMany(models.User, {through: models.UserProject});
             }
-        }
+        },
+        instanceMethods: {
+            getFullName: function () {
+                return [this.owner, this.name].join('/');
+            }
+        },
     });
     return Project;
 };

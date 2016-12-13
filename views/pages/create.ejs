@@ -33,7 +33,7 @@
                         var project = projects[i];
                     %>
                     <option value="<%= project.id %>" name="<%= project.name %>">
-                    <%= project.name + '/' + project.owner %></option>
+                    <%= project.getFullName() %></option>
                     <% } %>
                 </select>
 

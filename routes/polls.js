@@ -51,8 +51,11 @@ router.get('/result/:id', session.ensureAuthenticated, function (req, res) {
 
 // create new poll
 router.get('/create', session.ensureAuthenticated, function (req, res) {
-    req.user.getProjects().then(function (projects) {
-        res.render('pages/create', {user: req.user, projects: projects});
+    req.user.getProjects({}).then(function (projects) {
+        res.render('pages/create', {
+            user: req.user,
+            projects: projects.sort((a, b) => a.name.localeCompare(b.name))
+        });
     });
 });
 
