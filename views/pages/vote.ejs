@@ -21,11 +21,11 @@ console.log(selected);
                 <% for(var i = 0; i < options.length; i++){
                     var option = poll.Options[options[i]]; %>
                 <div id="option_<%= option.id %>" class="group">
-                    <li class="ui-state-default list-group-item group">
+                    <li class="list-group-item">
                         <span class="glyphicon glyphicon-resize-vertical pull-right" aria-hidden="true"></span>
                         <details>
-                            <summary><%= option.name %></summary>
-                            <p><%= option.description %></p>
+                            <summary><h4><%= option.name %></h4></summary>
+                            <div><%= option.description %></div>
                         </details>
 
                     </li>
