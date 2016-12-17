@@ -64,9 +64,9 @@
 
         <!-- Choose if there is a time limit on the poll -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="time-limit">Time Limit</label>
+            <label class="col-md-4 control-label" for="timeLimit">Time Limit</label>
             <div class="col-md-5">
-                <input type="checkbox" id="time-limit" name="time-limit" class="form-controll input-md">
+                <input type="checkbox" id="timeLimit" name="timeLimit" class="form-controll input-md">
             </div>
         </div>
 
@@ -75,7 +75,7 @@
             <label class="col-md-4 control-label" for="time-limit">Closing Date</label>
             <div class="col-md-5">
                 <div class="input-group date" id="closing-date-cal">
-                    <input name="closing-date" id="closing-date" class="form-control" disabled="disabled" type="text" required>
+                    <input name="closing-date" id="closingDate" class="form-control" disabled="disabled" type="text" required>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -159,26 +159,6 @@
         <div class="col-md-4">
             <textarea class="form-control" id="description_" name="description"></textarea>
         </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
     </div>
 </div>
 

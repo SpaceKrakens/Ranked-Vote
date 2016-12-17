@@ -69,6 +69,8 @@ router.post('/create', session.ensureAuthenticated, function (req, res) {
         type: data.type,
         access: data.access,
         password: data.password || '',
+        timeLimit: data.timeLimit,
+        closingDate: data.closingDate,
         Options: data.option.map((arr) => Object.assign({}, arr)),
         ProjectId: data.project
     }, {include: [models.Option, models.Project]}).then(function (savedPoll) {

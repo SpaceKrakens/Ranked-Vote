@@ -39,15 +39,15 @@ $('#access').change(function () {
     }
 });
 
-$('#time-limit').change(function () {
+$('#timeLimit').change(function () {
     if ($(this).prop('checked') === true) {
         $('#closing-date-group').show();
-        $('#closing-date').prop('disabled', false);
+        $('#closingDate').prop('disabled', false);
     } else {
         $('#closing-date-group').hide();
-        $('#closing-date').prop('disabled', true);
+        $('#closingDate').prop('disabled', true);
     }
 });
 $(function () {
-    $('#closing-date').datetimepicker();
+    $('#closingDate').datetimepicker();
 });
