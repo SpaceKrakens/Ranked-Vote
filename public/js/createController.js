@@ -48,3 +48,6 @@ $('#time-limit').change(function () {
         $('#closing-date').prop('disabled', true);
     }
 });
+$(function () {
+    $('#closing-date').datetimepicker();
+});

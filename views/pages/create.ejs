@@ -74,8 +74,12 @@
         <div class="form-group" id="closing-date-group" style="display:none;">
             <label class="col-md-4 control-label" for="time-limit">Closing Date</label>
             <div class="col-md-5">
-                <input id="closing-date" name="closing-date" class="form-control input-md required"
-                       required disabled="disabled" type="date">
+                <div class="input-group date" id="closing-date-cal">
+                    <input name="closing-date" id="closing-date" class="form-control" disabled="disabled" type="text" required>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
             </div>
         </div>
 
@@ -155,6 +159,26 @@
         <div class="col-md-4">
             <textarea class="form-control" id="description_" name="description"></textarea>
         </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
     </div>
 </div>
 
