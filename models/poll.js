@@ -6,7 +6,7 @@ module.exports = function (sequelize, DataTypes) {
         type:  DataTypes.ENUM('ranked', 'ranked-all', 'pick-one', 'pick-many'),
         access: DataTypes.ENUM('all', 'password', 'contributor', 'maintainer'),
         password: DataTypes.STRING,
-        timeLimit: DataTypes.BOOLEAN,
+        timeLimit: DataTypes.STRING,
         closingDate: DataTypes.DATE
     }, {
         classMethods: {
