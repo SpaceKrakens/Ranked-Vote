@@ -52,13 +52,34 @@
             </div>
         </div>
 
-        <!-- Passwort in case access level requires it -->
+        <!-- Password in case access level requires it -->
         <div class="form-group" id="password-group" style="display:none;">
             <label class="col-md-4 control-label" for="access">Password</label>
             <div class="col-md-5">
                 <input id="password" name="password" placeholder="password" class="form-control input-md required"
                        required disabled="disabled" type="text">
 
+            </div>
+        </div>
+
+        <!-- Choose if there is a time limit on the poll -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="timeLimit">Time Limit</label>
+            <div class="col-md-5">
+                <input type="checkbox" id="timeLimit" name="timeLimit" class="form-controll input-md">
+            </div>
+        </div>
+
+        <!-- Date-picker if time-limit is toggled on -->
+        <div class="form-group" id="closing-date-group" style="display:none;">
+            <label class="col-md-4 control-label" for="timeLimit">Closing Date</label>
+            <div class="col-md-5">
+                <div class="input-group date" id="closing-date-cal">
+                    <input name="closingDate" id="closingDate" class="form-control" disabled="disabled" type="text" required>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
             </div>
         </div>
 

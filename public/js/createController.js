@@ -38,3 +38,16 @@ $('#access').change(function () {
         $('#password').prop('disabled', true);
     }
 });
+
+$('#timeLimit').change(function () {
+    if ($(this).prop('checked') === true) {
+        $('#closing-date-group').show();
+        $('#closingDate').prop('disabled', false);
+    } else {
+        $('#closing-date-group').hide();
+        $('#closingDate').prop('disabled', true);
+    }
+});
+$(function () {
+    $('#closingDate').datetimepicker();
+});
