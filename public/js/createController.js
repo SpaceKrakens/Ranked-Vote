@@ -49,5 +49,8 @@ $('#timeLimit').change(function () {
     }
 });
 $(function () {
-    $('#closingDate').datetimepicker();
+    $('#closingDate').datetimepicker({
+        // add defaultDate - prolly 24 hours
+        minDate: moment().add(2, 'hours'),
+    });
 });
