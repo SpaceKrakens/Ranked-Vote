@@ -50,7 +50,8 @@ $('#timeLimit').change(function () {
 });
 $(function () {
     $('#closingDate').datetimepicker({
-        // add defaultDate - prolly 24 hours
+        defaultDate: moment().add(48, 'hours'), // @TODO - make this work.
+                                                //Currently it does not work (for some reason.)
         minDate: moment().add(2, 'hours'),
     });
 });
