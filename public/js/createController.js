@@ -9,6 +9,7 @@ $('#addButton').click(function () {
     option.find('label').attr('for', function (i, val) {
         return val + id;
     });
+    option.find('label').first().text('Option ' + id + ' Name');
     option.find('.form-control').attr('id', function (i, val) {
         return val + id;
     });
@@ -20,10 +21,11 @@ $('#addButton').click(function () {
 });
 
 /**
- * Removes the last added option from the list and decreases the index
+ * Removes the attached group and then decrements the index
+ * Also goes through each label and renames them
  */
 $('#removeButton').click(function () {
-    /* @TODO: fill with magic */
+    /* Implement magic */
 });
 
 /**
