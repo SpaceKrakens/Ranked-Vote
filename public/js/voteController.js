@@ -7,9 +7,8 @@ $('#sortable1, #sortable2')
       connectWith: '.connectedSortable',
   });
 
-// Not working yet - want to make a spesific button on the sortable to make it easier to
-// collapse and expand without
-// dragging accedentaly.
+// Not working yet - want to make a spesific button on the sortable to make it
+// easier to collapse and expand without dragging accedentaly.
 $( 'collapsible' ).on( 'click', function() {
     var icon = $( this );
     icon.toggleClass( 'ui-icon-minusthick ui-icon-plusthick' );

@@ -8,7 +8,8 @@ module.exports = function (sequelize, DataTypes) {
         classMethods: {
             associate: function (models) {
                 Project.hasMany(models.Poll);
-                Project.belongsToMany(models.User, {through: models.UserProject});
+                Project.belongsToMany(models.User,
+                  {through: models.UserProject});
             }
         },
         instanceMethods: {

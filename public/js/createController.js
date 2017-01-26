@@ -1,7 +1,8 @@
 var id = 1;
 
 /**
- * Copies the prototype option, updates id and name attributes to current index and pastes it
+ * Copies the prototype option, updates id and name attributes to current index
+ * and pastes it
  * into the available options, increases the index afterwards
  */
 $('#addButton').click(function () {
@@ -29,7 +30,8 @@ $('#removeButton').click(function () {
 });
 
 /**
- * Automatically en/disables the password input field depending on the selected access type
+ * Automatically en/disables the password input field depending on the selected
+ * access type
  */
 $('#access').change(function () {
     if (this.value === 'password') {
@@ -53,7 +55,7 @@ $('#timeLimit').change(function () {
 $(function () {
     $('#closingDate').datetimepicker({
         defaultDate: moment().add(48, 'hours'), // @TODO - make this work.
-                                                //Currently it does not work (for some reason.)
+                                                // Currently it does not work.
         minDate: moment().add(2, 'hours'),
     });
 });

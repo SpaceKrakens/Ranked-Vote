@@ -19,7 +19,8 @@ module.exports = function (sequelize, DataTypes) {
         classMethods: {
             associate: function (models) {
                 User.belongsToMany(models.Poll, {through: models.Vote});
-                User.belongsToMany(models.Project, {through: models.UserProject});
+                User.belongsToMany(models.Project,
+                  {through: models.UserProject});
             }
         }
     });

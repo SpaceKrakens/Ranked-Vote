@@ -32,7 +32,8 @@ var repoImporter = {
     // Returns the data we need for the database (and in correct format)
     getData: function (projects) {
         return projects.reduce(function (acc, curr) {
-            acc.push({id: curr.id, name: curr.name, url: curr.url, owner: curr.owner.login});
+            acc.push({id: curr.id, name: curr.name, url: curr.url,
+                owner: curr.owner.login});
             return acc;
         }, []);
     },

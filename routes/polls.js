@@ -7,7 +7,8 @@ var session = require('../session');
 
 // list available polls for the user
 router.get('/', session.ensureAuthenticated, function (req, res) {
-    models.Poll.scope({method: ['allowedForUser', req.user]}).findAll().then(function (userPolls) {
+    models.Poll.scope({method: ['allowedForUser', req.user]}).findAll()
+    .then(function (userPolls) {
         res.render('pages/listPolls', {user: req.user, polls: userPolls});
     });
 });
@@ -16,7 +17,8 @@ router.get('/', session.ensureAuthenticated, function (req, res) {
 router.get('/vote/:id', session.ensureAuthenticated, function (req, res) {
     models.Poll.findOne({
         where: {id: req.params.id},
-        include: [models.Option, {model: models.User, where: {id: req.user.id}, required: false}]
+        include: [models.Option, {model: models.User, where: {id: req.user.id},
+            required: false}]
     }).then(function (poll) {
         var vote = null;
         poll.Options = models.transformToObject(poll.Options);
@@ -34,7 +36,7 @@ router.post('/vote/:id', session.ensureAuthenticated, function (req, res) {
     models.Poll.findByPrimary(req.params.id).then(function (poll) {
         req.user.addPoll(poll, {data: req.body.sort}).then(function () {
             res.setHeader('Content-Type', 'routerlication/json');
-            res.send(JSON.stringify({title: 'congrats', html: '<p>you won!</p>'}));
+            res.send(JSON.stringify({title: 'Request Successful'}));
         });
     });
     // @TODO actual saving of vote data depending on poll type
